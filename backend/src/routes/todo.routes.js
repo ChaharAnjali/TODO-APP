@@ -12,19 +12,19 @@ const {
 //  Middlewares import
 const showLog = require("../middleware/log.middleware");
 const { validateTodo } = require("../middleware/validateTodo.middleware");
-
+const auth = require("../middleware/auth.middlewware")
 
 //  GET all todos
-router.get("/", showLog, getTodos);
+router.get("/", showLog,auth, getTodos);
 
 //  CREATE todo
-router.post("/", validateTodo, createTodo);
+router.post("/", validateTodo,auth, createTodo);
 
 //  UPDATE todo (ID required)
-router.put("/:id", updateTodo);
+router.put("/:id",auth, updateTodo);
 
 //  DELETE todo (ID required)
-router.delete("/:id", deleteTodo);
+router.delete("/:id",auth, deleteTodo);
 
 
 module.exports = router;
